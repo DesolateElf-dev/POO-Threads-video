@@ -17,6 +17,7 @@ public class ThreadAeroporto extends Thread{
 		this.pistaSul = pistaSul;
 	}
 	
+	@Override
 	public void run() {
 		
 		try {
@@ -24,7 +25,7 @@ public class ThreadAeroporto extends Thread{
 			aviaoManobrando();
 			aviaoTaxiando();
 			
-			int pista = (int)((Math.random()*2)+1);; //1 - Pista Norte | 2 - Pista Sul
+			int pista = (int)((Math.random()*2)+1); //1 - Pista Norte | 2 - Pista Sul
 			
 			if (pista == 1) {
 				pistaNorte.acquire();
@@ -40,7 +41,6 @@ public class ThreadAeroporto extends Thread{
 				semaforoPista.release();
 				pistaSul.release();				
 			}
-			
 			aviaoAfastando();
 			
 		} catch (InterruptedException e) {
